@@ -1,15 +1,10 @@
 package Day_1;
 
-import aInput.Inputs;
+import Input.Inputs;
 
 public class Stars01 {
     public static void main(String[] args) {
-        String numberSequence = Inputs.day1;
-        int[] a = new int[numberSequence.length()];
-        String[] s = numberSequence.split("");
-        for (int i = 0; i < s.length; i++){
-            a[i] = Integer.parseInt(s[i]);
-        }
+        int[] a = Inputs.getDay1();
         System.out.println("the sum is: " + sum(a));
         System.out.println("the half sum is: " + sumHalf(a));
     }

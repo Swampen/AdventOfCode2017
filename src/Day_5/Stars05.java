@@ -1,6 +1,6 @@
 package Day_5;
 
-import aInput.Inputs;
+import Input.Inputs;
 
 public class Stars05 {
     public static void main(String[] args) {

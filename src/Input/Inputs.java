@@ -1,4 +1,4 @@
-package aInput;
+package Input;
 
 public class Inputs {
 

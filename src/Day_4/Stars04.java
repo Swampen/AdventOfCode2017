@@ -1,6 +1,6 @@
 package Day_4;
 
-import aInput.Inputs;
+import Input.Inputs;
 
 import java.util.Arrays;
 import java.util.StringJoiner;

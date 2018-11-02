@@ -1,9 +1,6 @@
 package Day_2;
 
-import aInput.Inputs;
-
-import java.util.Arrays;
-import java.util.Scanner;
+import Input.Inputs;
 
 public class Stars02 {
     public static void main(String[] args) {
