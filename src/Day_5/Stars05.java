@@ -7,14 +7,14 @@ public class Stars05 {
 
         int[] aInput = Inputs.getDay5();
         int[] test = {0, 3, 0, 1, -3};
-        System.out.println(countedStrangeSteps(aInput));
+        System.out.println("Ordenary steps: " + countedOrdenarySteps(aInput));
+        System.out.println("Strange steps: " + countedStrangeSteps(aInput));
     }
 
     public static int countedStrangeSteps(int[] a){
         int steps = 0;
 
         int i = 0;
-        int j = 0;
         while (i < a.length){
             i = findNextPosS2(i, a);
             steps++;
@@ -39,7 +39,7 @@ public class Stars05 {
     public static int findNextPosS1(int pos, int[]aArr){
         int steps = aArr[pos];
         int nextPos = pos + steps;
-        aArr[pos] = aArr[pos]+1;
+        aArr[pos]++;
 
         return nextPos;
     }

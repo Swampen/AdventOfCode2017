@@ -2,6 +2,13 @@ package Input;
 
 public class Inputs {
 
+    public static int [] getDay6(){
+        String[] s = day6.split("\t");
+        return stringToInt(s);
+    }
+
+    public static String day6 = "2\t8\t8\t5\t4\t2\t3\t1\t5\t5\t1\t2\t15\t13\t5\t14";
+
     public static int [] getDay5(){
         String[] s = day5.split("\n");
         return stringToInt(s);

@@ -12,11 +12,7 @@ public class Stars04 {
         String [] array = input.split("\n");
 
         System.out.println("Number of valid passphrases: " + numberValidPassphrase(array));
-
         System.out.println("Number of valid passphrases in any order: " + validPassphraseAnyOrder(array));
-
-
-
     }
 
     public static int validPassphraseAnyOrder(String[] s){
