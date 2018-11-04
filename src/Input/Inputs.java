@@ -4,7 +4,7 @@ package Input;
 public class Inputs {
 
     public static String[][] getDay7() {
-        String s = day7Test;
+        String s = day7;
 
         String[] sArr = s.split("\n");
 

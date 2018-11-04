@@ -17,30 +17,55 @@ public class Stars07 {
             System.out.println();
         }
         String root = findRoot(input);
-        System.out.println(Arrays.toString(unbalancedProgAdjValue(root, input)));
+        String[] aRoot = findProg(root, input);
+        int[] weights = new int[10];
+        for (int i = 1; i < aRoot.length; i++){
+            if (aRoot[i] != null) {
+                weights[i - 1] = totalProgWeight(aRoot[i], input);
+            }
+        }
+        System.out.println(Arrays.toString(weights));
     }
 
-    public static int[] unbalancedProgAdjValue(String root, String[][] s){
-        int adjustment = 0;
-        boolean foundUnbalance = false;
-        int[] weights = new int[7];
+    private static String[] findProg(String root, String[][] s) {
+        for (int i = 0; i < s.length; i++){
+            String[] temp = s[i][0].split(" ");
+            if (root.equals(temp[0])){
+                return s[i];
+            }
+        }
+        return null;
+    }
+
+    public static int totalProgWeight(String root, String[][] s){
+        int weight = findWeight(root, s);
 
         for (int i = 0; i < s.length; i++) {
             String[] temp = s[i][0].split(" ");
             if (root.equals(temp[0])) {
-                int k = 0;
-                for (int j = 0; j < s.length; j++){
-                    temp = s[j][0].split(" ");
-                    if (s[i][1].equals(temp[0]) || s[i][2].equals(temp[0]) || s[i][3].equals(temp[0])){
-                        weights[k] = Integer.parseInt(temp[1].substring(1,temp[1].length()-1));
-                        k++;
+                for (int j = 1; j < s[i].length; j++){
+                    if (s[i][j] != null) {
+                        weight += totalProgWeight(s[i][j], s);
                     }
                 }
             }
         }
-
-        return weights;
+        return weight;
     }
+
+    private static int findWeight(String disk, String[][] s) {
+        int weight = 0;
+        for (int i = 0; i < s.length; i++){
+            String[] temp = s[i][0].split(" ");
+            if (disk.equals(temp[0])){
+                weight = Integer.parseInt(temp[1].substring(1,temp[1].length()-1));
+                return weight;
+            }
+        }
+
+        return weight;
+    }
+
 
     public static String findRoot(String[][] s){
         boolean rootFound = false;
