@@ -2,6 +2,8 @@ package Day_7;
 
 import Input.Inputs;
 
+import java.util.Arrays;
+
 
 public class Stars07 {
 
@@ -15,9 +17,30 @@ public class Stars07 {
             System.out.println();
         }
         String root = findRoot(input);
-        //System.out.println(unbalancedProgAdjValue(root, input));
+        System.out.println(Arrays.toString(unbalancedProgAdjValue(root, input)));
     }
 
+    public static int[] unbalancedProgAdjValue(String root, String[][] s){
+        int adjustment = 0;
+        boolean foundUnbalance = false;
+        int[] weights = new int[7];
+
+        for (int i = 0; i < s.length; i++) {
+            String[] temp = s[i][0].split(" ");
+            if (root.equals(temp[0])) {
+                int k = 0;
+                for (int j = 0; j < s.length; j++){
+                    temp = s[j][0].split(" ");
+                    if (s[i][1].equals(temp[0]) || s[i][2].equals(temp[0]) || s[i][3].equals(temp[0])){
+                        weights[k] = Integer.parseInt(temp[1].substring(1,temp[1].length()-1));
+                        k++;
+                    }
+                }
+            }
+        }
+
+        return weights;
+    }
 
     public static String findRoot(String[][] s){
         boolean rootFound = false;
