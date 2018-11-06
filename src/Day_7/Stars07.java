@@ -10,21 +10,44 @@ public class Stars07 {
     public static void main(String[] args) {
         String[][] input = Inputs.getDay7();
 
-        for (int i = 0; i < input.length; i++){
+        /*for (int i = 0; i < input.length; i++){
             for (int j = 0; j < input[i].length; j++) {
                 System.out.print(input[i][j] + ", ");
             }
             System.out.println();
-        }
+        }*/
         String root = findRoot(input);
         String[] aRoot = findProg(root, input);
         int[] weights = new int[10];
-        for (int i = 1; i < aRoot.length; i++){
+        findUnbalance(root, input);
+        /*for (int i = 1; i < aRoot.length; i++){
             if (aRoot[i] != null) {
                 weights[i - 1] = totalProgWeight(aRoot[i], input);
             }
         }
+        System.out.println(Arrays.toString(aRoot));
+        System.out.println(Arrays.toString(weights));*/
+    }
+
+    public static void findUnbalance(String root, String[][] input){
+        String[] aRoot = findProg(root, input);
+        int[] weights = new int[10];
+        for (int i = 1; i < aRoot.length; i++){
+            if (aRoot[i] != null) {
+                weights[i] = totalProgWeight(aRoot[i], input);
+            }
+        }
+        System.out.println(Arrays.toString(aRoot));
         System.out.println(Arrays.toString(weights));
+
+        for (int i = 1; i < weights.length-1; i++){
+            if (weights[i] != weights[i+1]){
+                String newUnbalancedRoot = aRoot[i+1];
+                findUnbalance(newUnbalancedRoot, input);
+            }
+        }
+
+
     }
 
     private static String[] findProg(String root, String[][] s) {
