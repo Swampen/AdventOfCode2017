@@ -10,27 +10,14 @@ public class Stars10 {
         int[] lengths = Inputs.day10lengths;
         int[] testLengths = {1,2,3};
 
+        input = hashOperation(input, lengths);
+        System.out.println("The result of multiplying the first two numbers in the list is: " + input[0]*input[1] + "\n");
+
+        input = Inputs.getDay10input();
         String sLengths = tabToString(lengths);
-
-
         int[] ASCIILenths = lengthsToASCII(sLengths);
-        // 01 input = hashOperation(input, lengths);
-
-        // 01 System.out.println("The result of multiplying the first two numbers in the list is: " + input[0]*input[1]);
-
-        System.out.println(sLengths);
-        System.out.println(Arrays.toString(ASCIILenths));
         String knotHash = knotHash(input, ASCIILenths);
-        System.out.println(knotHash);
-        System.out.println(knotHash.equals("3efbe78a8d82f29979031a4aa0b16a9d"));
-
-        int[] test = {65, 27, 9, 1, 4, 3, 40, 50, 91, 7, 6, 0, 2, 5, 68, 22};
-        int xor = 0;
-        for (int i = 0; i < test.length; i++){
-            xor = xor ^ test[i];
-        }
-
-
+        System.out.println("The dence hash result of the input lengths " + Arrays.toString(lengths) + " is: " + knotHash);
     }
 
     private static String tabToString(int[] input) {
@@ -73,10 +60,10 @@ public class Stars10 {
         int k = 0;
         for (int i = 0; i < input.length; i++){
             twoDArray[j][k] = input[i];
-            k++;
-            if (k == 16){
-                j++;
-                k = 0;
+            j++;
+            if (j == 16){
+                k++;
+                j = 0;
             }
         }
 
