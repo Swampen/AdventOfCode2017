@@ -4,7 +4,7 @@ import Input.Inputs;
 
 import java.util.Arrays;
 
-public class Star11 {
+public class Stars11 {
     public static void main(String[] args) {
         String[] input = Inputs.getDay11();
 
